@@ -14,7 +14,7 @@ class Admin < ApplicationRecord
 	validate :validate_username
 
 	def validate_username
-	  if User.where(email: user_name).exists?
+	  if Admin.where(email: user_name).exists?
 	    	errors.add(:user_name, :invalid)
 	  end
 	end

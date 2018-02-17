@@ -6,5 +6,15 @@ Rails.application.routes.draw do
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   	
   	
-  	devise_for :admins
+  	devise_for :admins, path: 'admins', controllers: 
+  	{
+  		registrations: 	'admins/registrations',
+  		sessions: 		'admins/sessions',
+  		confirmations: 	'admins/confirmations',
+  		passwords: 		'admins/passwords',
+  		unlocks: 		'admins/unlocks'
+
+  		# Not including omniauth because it's not enabled in the Admin Model
+  		# ,omniauth_callbacks: 'admins/omniauth_callbacks'
+  	}
 end
