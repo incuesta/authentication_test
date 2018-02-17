@@ -17,4 +17,14 @@ Rails.application.routes.draw do
   		# Not including omniauth because it's not enabled in the Admin Model
   		# ,omniauth_callbacks: 'admins/omniauth_callbacks'
   	}
+
+
+    devise_for :users, path: 'users', controllers:
+    {
+      registrations: 'users/registrations',
+      sessions: 'users/sessions',
+      confirmations: 'users/confirmations',
+      passwords: 'users/passwords',
+      unlocks: 'users/unlocks'
+    }
 end
