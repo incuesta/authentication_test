@@ -15,6 +15,10 @@
 
   <tbody>
     <div id="logout">
+        <p><%= link_to 'sign in', new_admin_registration_path %></p>
+    </div>
+
+    <div id="logout">
         <p><%= link_to 'sign out', destroy_admin_session_path, method: :delete, data: {confirm: 'Sign out?, Shyshyshy?'} %></p>
     </div>
 

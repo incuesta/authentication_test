@@ -1,0 +1,62 @@
+<%= form_with(model: idol, local: true) do |form| %>
+  
+  <!-- Errors -->
+  <% if idol.errors.any? %>
+      <div id="error_explanation">
+          <h2><%= pluralize(idol.errors.count, "error") %> prohibited this idol from being saved:</h2>
+
+          <ul>
+          <% idol.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+
+  <% if @talents.errors.any? %>
+      <div id="error_explanation">
+          <h2><%= pluralize(@talents.errors.count, "error") %> prohibited this idol from being saved:</h2>
+
+          <ul>
+          <% @talents.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+  <!-- Errors End -->
+
+
+
+  <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, id: :idol_last_name %>
+  </div>
+
+  <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, id: :idol_first_name %>
+  </div>
+
+
+
+
+  <!-- Fields for Talents -->
+  <div class="field">
+      <%= form.fields_for :talents, @talents do |talent_field| %>
+          <%= talent_field.label :description %>
+          <%= talent_field.text_field :description, id: :idol_first_name %>
+      <% end %>
+  </div>
+  <!-- Fields for Talents End -->
+
+
+
+
+
+  <div class="actions">
+      <%= form.submit %>
+  </div>
+<% end %>

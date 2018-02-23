@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217085537) do
+ActiveRecord::Schema.define(version: 20180219074619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "admin_id"
+    t.string "street_name"
+    t.string "city_name"
+    t.index ["admin_id"], name: "index_addresses_on_admin_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "user_name"
@@ -50,6 +59,21 @@ ActiveRecord::Schema.define(version: 20180217085537) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "idols", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "talents", force: :cascade do |t|
+    t.bigint "idol_id"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idol_id"], name: "index_talents_on_idol_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "email", default: "", null: false
@@ -76,4 +100,5 @@ ActiveRecord::Schema.define(version: 20180217085537) do
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
+  add_foreign_key "addresses", "admins"
 end

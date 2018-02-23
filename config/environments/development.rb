@@ -45,8 +45,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = 
   {
 
-    user_name: ENV["GMAIL"],
-    password: ENV["GMAIL_PASSWD"],
+    user_name: Figaro.env.gmail,
+    password: Figaro.env.gmail_pw,
     domain: mail_config[:host],
     address: 'smtp.gmail.com',
     port: '587',
