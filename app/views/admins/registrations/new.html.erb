@@ -26,6 +26,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+
+  <div class="field">
+    <%= f.fields_for :admin_quirk do |aq| %>
+        <%= aq.label :fave_idol %>
+        <%= aq.text_field :fave_idol %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

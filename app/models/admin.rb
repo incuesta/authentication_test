@@ -8,6 +8,17 @@ class Admin < ApplicationRecord
 	attr_accessor :login
 
 
+
+	has_one :admin_quirk, dependent: :destroy
+	accepts_nested_attributes_for :admin_quirk
+
+
+
+	def admin_quirk
+		super || build_admin_quirk
+	end
+
+
 	validates :user_name, presence: true, uniqueness: { case_sensitive: false }
 
 	# Prevent User from Using another's Email as a Username
@@ -18,6 +29,7 @@ class Admin < ApplicationRecord
 	    	errors.add(:user_name, :invalid)
 	  end
 	end
+
 
 
 

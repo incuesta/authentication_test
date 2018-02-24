@@ -42,12 +42,16 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, :email])
+    devise_parameter_sanitizer.permit(:sign_up) do |admins|
+        admins.permit(:email, :user_name, :password, :password_confirmation, admin_quirk_attributes: :fave_idol)
+    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :email])
+    devise_parameter_sanitizer.permit(:account_update) do |admins|
+        admins.permit(:email, :user_name, :password, :password_confirmation, admin_quirk_attributes: :fave_idol)
+    end
   end
 
   # The path used after sign up.

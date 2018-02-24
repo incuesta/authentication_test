@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219074619) do
+ActiveRecord::Schema.define(version: 20180224031651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20180219074619) do
     t.string "street_name"
     t.string "city_name"
     t.index ["admin_id"], name: "index_addresses_on_admin_id"
+  end
+
+  create_table "admin_quirks", force: :cascade do |t|
+    t.string "fave_idol"
+    t.bigint "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_admin_quirks_on_admin_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -101,4 +109,5 @@ ActiveRecord::Schema.define(version: 20180219074619) do
   end
 
   add_foreign_key "addresses", "admins"
+  add_foreign_key "admin_quirks", "admins"
 end
