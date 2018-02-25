@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180224031651) do
+ActiveRecord::Schema.define(version: 20180224115835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180224031651) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["user_name"], name: "index_admins_on_user_name", unique: true
@@ -72,6 +73,15 @@ ActiveRecord::Schema.define(version: 20180224031651) do
     t.string "first_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "name"
+    t.string "picture"
+    t.bigint "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_images_on_admin_id"
   end
 
   create_table "talents", force: :cascade do |t|
@@ -110,4 +120,5 @@ ActiveRecord::Schema.define(version: 20180224031651) do
 
   add_foreign_key "addresses", "admins"
   add_foreign_key "admin_quirks", "admins"
+  add_foreign_key "images", "admins"
 end

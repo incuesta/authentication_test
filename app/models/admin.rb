@@ -8,6 +8,8 @@ class Admin < ApplicationRecord
 	attr_accessor :login
 
 
+	has_one :image, dependent: :destroy
+
 
 	has_one :admin_quirk, dependent: :destroy
 	accepts_nested_attributes_for :admin_quirk
