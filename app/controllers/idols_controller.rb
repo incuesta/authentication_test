@@ -5,12 +5,28 @@ class IdolsController < ApplicationController
   # GET /idols.json
   def index
     @idols = Idol.all
+
+    respond_to do | format |
+        format.html
+
+        format.pdf do
+
+            prawn_pdf = IdolPdf.new(@idols, view_context)
+
+            send_data prawn_pdf.render, filename: "shyshyshy.pdf", type: 'application/pdf', disposition: "inline"
+        end
+
+    end
   end
+
 
   # GET /idols/1
   # GET /idols/1.json
   def show
+
   end
+
+
 
 
 
@@ -38,6 +54,8 @@ class IdolsController < ApplicationController
 
 
 
+
+
   # GET /idols/1/edit
   def edit
     @talents = @idol.talents.last
@@ -49,6 +67,9 @@ class IdolsController < ApplicationController
       @talents = @idol.talents.last
       respond_to do |format|
           if @idol.update(idol_params) && @talents.update(talent_params)
+              shiori = KuboshiMailer.new_shiorichan(@idol, Admin.find(3))
+              shiori.deliver_now
+
               format.html { redirect_to idols_path, notice: 'Idol was successfully updated.' }
               format.json { render :show, status: :created, location: @idol }
 
@@ -61,6 +82,11 @@ class IdolsController < ApplicationController
       end
   end
 
+
+
+
+
+
   # DELETE /idols/1
   # DELETE /idols/1.json
   def destroy
@@ -70,6 +96,11 @@ class IdolsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

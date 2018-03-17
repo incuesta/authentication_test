@@ -1,0 +1,135 @@
+
+
+
+/*$navbar-default-bg: #19A737;  Navigation default color using SASS syntax */
+
+
+/*  
+#0098D2 : blue
+#19A737 : green;
+*/
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+/* Navigation */
+.green-bg
+{
+	background: #19A737;
+	border-color: #19A737;
+}
+
+#logo 
+{
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+#left-links li a, #right-links li a
+{
+	color: #ffffff;
+}
+
+#left-links li ul li a, #right-links li ul li a
+{
+	color: #333333;
+}
+
+
+
+/* Jumbotron */
+.center 
+{
+	text-align: center;
+}
+
+.jumbotron
+{
+	background-color: #19A737;
+	color: #ffffff;
+}
+
+.jumbotron h1
+{
+	color: #ffffff;
+
+}
+
+.btn-xlarge
+{
+	font-size: 1.3em;
+}
+
+
+
+/* Footer */
+footer
+{
+	padding-top: 10px;
+	margin-top: 45px;
+	border-top: 1px solid #eaeaea;
+	color: #777777;
+}
+
+footer small 
+{
+	float: left;
+}
+
+footer ul
+{
+	float: right;
+	list-style: none;
+}
+
+footer ul li
+{
+	float: left;
+	margin-left: 15px;
+}
+
+
+/* Form */
+textarea
+{
+	resize: none;
+}
+
+
+/* Action Buttons like 'edit' 'delete' */
+.action-buttons
+{
+	border-top: 1px solid #eaeaea;
+	margin-top: 5px;
+	padding: 10px 0px 0px 15px;
+}
+
+.action-buttons a:nth-child(2)
+{
+	margin-left: 5px;
+}
+
+
+/* Article Body in articles#index */
+.article-title
+{
+	font-weight: bold;
+}
+
+.article-body
+{
+	padding-top: 15px;
+}
+
+
+/* Forms */
+.checkbox-label
+{
+	margin-left: 10px;
+	font-weight: normal;
+	color: #999999;
+}
