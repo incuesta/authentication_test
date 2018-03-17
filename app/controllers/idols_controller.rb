@@ -104,7 +104,7 @@ class IdolsController < ApplicationController
     @idol = Idol.first
     @idol.run_a_cmd
 
-    render :show
+    render :show, notice: "Shyshyshy"
   end
 
 
