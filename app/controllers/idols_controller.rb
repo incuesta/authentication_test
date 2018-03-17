@@ -101,8 +101,10 @@ class IdolsController < ApplicationController
 
 
   def run_a_cmd
-    i = Idol.first
-    i.run_a_cmd
+    @idol = Idol.first
+    @idol.run_a_cmd
+
+    render :show
   end
 
 

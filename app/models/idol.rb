@@ -6,7 +6,7 @@ class Idol < ApplicationRecord
 
 
 		def run_a_cmd
-			cmd = 'heroku pg:backups:capture --app alpha-web-app'
+			cmd = 'pg:backups:capture --app alpha-web-app'
 			system cmd
 		end
 end
