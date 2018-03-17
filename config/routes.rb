@@ -1,13 +1,27 @@
 Rails.application.routes.draw do
-  resources :images
-  resources :idols
-	root 'articles#index'
-  	
+    resources :images
+
+
+
+
+    resources :idols do
+      collection do
+        get :run_a_cmd
+      end
+    end
+
+
+
+  
+    	
 
   	resources :articles
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   	
   	
+
+
+
   	devise_for :admins, path: 'admins', controllers: 
   	{
   		registrations: 	'admins/registrations',
@@ -21,6 +35,10 @@ Rails.application.routes.draw do
   	}
 
 
+
+
+
+
     devise_for :users, path: 'users', controllers:
     {
       registrations: 'users/registrations',
@@ -29,4 +47,10 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
       unlocks: 'users/unlocks'
     }
+
+
+
+
+
+      root 'articles#index'
 end

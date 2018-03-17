@@ -100,6 +100,14 @@ class IdolsController < ApplicationController
 
 
 
+  def run_a_cmd
+    i = Idol.first
+    i.run_a_cmd
+  end
+
+
+
+
 
 
   private
