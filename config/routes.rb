@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
     resources :idols do
       collection do
-        get :run_a_cmd
+        get :backup_to_dump
+        get :restore_from_dump
       end
     end
 

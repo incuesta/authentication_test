@@ -5,8 +5,5 @@ class Idol < ApplicationRecord
 
 
 
-		def run_a_cmd
-			cmd = 'pg:backups:capture --app alpha-web-app'
-			system cmd
-		end
+		
 end

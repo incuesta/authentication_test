@@ -6,6 +6,9 @@ class IdolsController < ApplicationController
   def index
     @idols = Idol.all
 
+
+
+
     respond_to do | format |
         format.html
 
@@ -24,7 +27,10 @@ class IdolsController < ApplicationController
   # GET /idols/1.json
   def show
 
+
   end
+
+
 
 
 
@@ -100,11 +106,43 @@ class IdolsController < ApplicationController
 
 
 
-  def run_a_cmd
+  def backup_to_dump
     @idol = Idol.last
-    @idol.run_a_cmd
+    
 
-    render :show, notice: "Shyshyshy"
+    user = "postgres"
+
+    host_development = "127.0.0.1"
+    host_produciton = "alpha-web-app.herokuapp.com"
+
+    db = "twiceland"
+
+    cmd = "pg_dump --format=c --verbose --username=#{user} --host=#{host_produciton} --no-owner --no-acl --no-password --file=c:/backup.dump twiceland"
+
+    system cmd
+
+    render :show, notice: "Shyshyshy #{cmd}"
+  end
+
+
+  def restore_from_dump
+
+    
+
+    @idol = Idol.first
+
+    user = "postgres"
+
+    host_development = "127.0.0.1"
+    host_produciton = "alpha-web-app.herokuapp.com"
+
+    db = "twiceland"
+
+    cmd = "pg_restore --format=c --verbose --username=#{user} --host=#{host_produciton} --clean --no-owner --no-acl --dbname=twiceland c:/backup.dump"
+
+    system cmd
+
+    render :show, notice: "Jeoreujima #{cmd}"
   end
 
 
