@@ -110,14 +110,14 @@ class IdolsController < ApplicationController
     @idol = Idol.last
     
 
-    user = "postgres"
+    user = "pzvxpqdxzkvlaj"
 
     host_development = "127.0.0.1"
-    host_produciton = "alpha-web-app.herokuapp.com"
+    host_produciton = "ec2-184-73-196-65.compute-1.amazonaws.com"
+    port = "5432"
 
-    db = "twiceland"
 
-    cmd = "pg_dump --format=c --verbose --username=#{user} --host=#{host_produciton} --no-owner --no-acl --no-password --file=c:/backup.dump twiceland"
+    cmd = "pg_dump --format=c --verbose --username=#{user} --host=#{host_produciton} --port=port --no-owner --no-acl --no-password --file=c:/backup.dump df8oga4qe83cps"
 
     system cmd
 
