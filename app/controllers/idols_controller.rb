@@ -109,15 +109,10 @@ class IdolsController < ApplicationController
   def backup_to_dump
     @idol = Idol.last
     
-
-    user = "pzvxpqdxzkvlaj"
-
+    user = "postgres"
     host_development = "127.0.0.1"
-    host_produciton = "ec2-184-73-196-65.compute-1.amazonaws.com"
-    port = "5432"
 
-
-    cmd = "pg_dump --format=c --verbose --username=#{user} --host=#{host_produciton} --port=port --no-owner --no-acl --no-password --file=c:/backup.dump df8oga4qe83cps"
+    cmd = "pg_dump --format=c --verbose --username=#{user} --host=#{host_development} --no-owner --no-acl --no-password --file=c:/backup.dump twiceland"
 
     system cmd
 
@@ -127,18 +122,13 @@ class IdolsController < ApplicationController
 
   def restore_from_dump
 
-    
-
     @idol = Idol.first
 
     user = "postgres"
-
     host_development = "127.0.0.1"
-    host_produciton = "alpha-web-app.herokuapp.com"
 
-    db = "twiceland"
 
-    cmd = "pg_restore --format=c --verbose --username=#{user} --host=#{host_produciton} --clean --no-owner --no-acl --dbname=twiceland c:/backup.dump"
+    cmd = "pg_restore --format=c --verbose --username=#{user} --host=#{host_development} --clean --no-owner --no-acl --dbname=twiceland c:/backup.dump"
 
     system cmd
 
